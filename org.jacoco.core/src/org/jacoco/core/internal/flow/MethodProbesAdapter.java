@@ -116,6 +116,13 @@ public final class MethodProbesAdapter extends MethodVisitor {
 		}
 	}
 
+	@Override
+	public void visitMethodInsn(final int opcode, final String owner,
+			final String name, final String desc, final boolean itf) {
+		probesVisitor.visitMethodInsnWithProbe(opcode, owner, name, desc, itf,
+		idGenerator.nextId());
+	}
+
 	private int jumpPopCount(final int opcode) {
 		switch (opcode) {
 		case Opcodes.GOTO:

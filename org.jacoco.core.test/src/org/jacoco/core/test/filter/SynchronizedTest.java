@@ -62,7 +62,7 @@ public class SynchronizedTest extends ValidationTestBase {
 	public void implicitException() {
 		assertLine("implicitException.monitorEnter", isJDKCompiler
 				? ICounter.FULLY_COVERED : ICounter.PARTLY_COVERED);
-		assertLine("implicitException.exception", ICounter.NOT_COVERED);
+		assertLine("implicitException.exception", ICounter.FULLY_COVERED);
 		if (isJDKCompiler) {
 			// without filter next line covered partly:
 			assertLine("implicitException.monitorExit", ICounter.NOT_COVERED);

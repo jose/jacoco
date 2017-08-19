@@ -57,6 +57,13 @@ public class MethodProbesAdapterTest implements IProbeIdGenerator {
 		}
 
 		@Override
+		public void visitMethodInsnWithProbe(int opcode, String owner,
+				String name, String desc, boolean itf, int probeId) {
+			rec("visitMethodInsnWithProbe", Integer.valueOf(opcode), owner,
+					name, desc, Boolean.valueOf(itf), Integer.valueOf(probeId));
+		}
+
+		@Override
 		public void visitInsnWithProbe(int opcode, int probeId) {
 			rec("visitInsnWithProbe", Integer.valueOf(opcode),
 					Integer.valueOf(probeId));

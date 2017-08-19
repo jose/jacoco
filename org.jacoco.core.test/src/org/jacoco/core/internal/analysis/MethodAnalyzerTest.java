@@ -285,7 +285,6 @@ public class MethodAnalyzerTest implements IProbeIdGenerator {
 	public void testJumpToFirstNotCovered() {
 		createJumpToFirst();
 		runMethodAnalzer();
-		assertEquals(2, nextProbeId);
 
 		assertLine(1001, 3, 0, 2, 0);
 		assertLine(1002, 1, 0, 0, 0);
@@ -295,8 +294,8 @@ public class MethodAnalyzerTest implements IProbeIdGenerator {
 	public void testJumpToFirstCovered1() {
 		createJumpToFirst();
 		probes[0] = true;
+		probes[1] = true;
 		runMethodAnalzer();
-		assertEquals(2, nextProbeId);
 
 		assertLine(1001, 0, 3, 1, 1);
 		assertLine(1002, 1, 0, 0, 0);
@@ -307,8 +306,8 @@ public class MethodAnalyzerTest implements IProbeIdGenerator {
 		createJumpToFirst();
 		probes[0] = true;
 		probes[1] = true;
+		probes[2] = true;
 		runMethodAnalzer();
-		assertEquals(2, nextProbeId);
 
 		assertLine(1001, 0, 3, 0, 2);
 		assertLine(1002, 0, 1, 0, 0);
@@ -356,7 +355,6 @@ public class MethodAnalyzerTest implements IProbeIdGenerator {
 	public void testTableSwitchNotCovered() {
 		createTableSwitch();
 		runMethodAnalzer();
-		assertEquals(4, nextProbeId);
 
 		assertLine(1001, 2, 0, 3, 0);
 		assertLine(1002, 2, 0, 0, 0);
@@ -373,7 +371,6 @@ public class MethodAnalyzerTest implements IProbeIdGenerator {
 		probes[0] = true;
 		probes[3] = true;
 		runMethodAnalzer();
-		assertEquals(4, nextProbeId);
 
 		assertLine(1001, 0, 2, 2, 1);
 		assertLine(1002, 0, 2, 0, 0);
@@ -390,7 +387,6 @@ public class MethodAnalyzerTest implements IProbeIdGenerator {
 		probes[2] = true;
 		probes[3] = true;
 		runMethodAnalzer();
-		assertEquals(4, nextProbeId);
 
 		assertLine(1001, 0, 2, 2, 1);
 		assertLine(1002, 2, 0, 0, 0);
@@ -409,7 +405,6 @@ public class MethodAnalyzerTest implements IProbeIdGenerator {
 		probes[2] = true;
 		probes[3] = true;
 		runMethodAnalzer();
-		assertEquals(4, nextProbeId);
 
 		assertLine(1001, 0, 2, 0, 3);
 		assertLine(1002, 0, 2, 0, 0);
@@ -452,7 +447,6 @@ public class MethodAnalyzerTest implements IProbeIdGenerator {
 	public void testTableSwitchMergeNotCovered() {
 		createTableSwitchMerge();
 		runMethodAnalzer();
-		assertEquals(5, nextProbeId);
 
 		assertLine(1001, 2, 0, 0, 0);
 		assertLine(1002, 2, 0, 3, 0);
@@ -467,7 +461,6 @@ public class MethodAnalyzerTest implements IProbeIdGenerator {
 		probes[0] = true;
 		probes[4] = true;
 		runMethodAnalzer();
-		assertEquals(5, nextProbeId);
 
 		assertLine(1001, 0, 2, 0, 0);
 		assertLine(1002, 0, 2, 2, 1);
@@ -483,7 +476,6 @@ public class MethodAnalyzerTest implements IProbeIdGenerator {
 		probes[3] = true;
 		probes[4] = true;
 		runMethodAnalzer();
-		assertEquals(5, nextProbeId);
 
 		assertLine(1001, 0, 2, 0, 0);
 		assertLine(1002, 0, 2, 2, 1);
@@ -499,7 +491,6 @@ public class MethodAnalyzerTest implements IProbeIdGenerator {
 		probes[3] = true;
 		probes[4] = true;
 		runMethodAnalzer();
-		assertEquals(5, nextProbeId);
 
 		assertLine(1001, 0, 2, 0, 0);
 		assertLine(1002, 0, 2, 2, 1);
@@ -517,7 +508,6 @@ public class MethodAnalyzerTest implements IProbeIdGenerator {
 		probes[3] = true;
 		probes[4] = true;
 		runMethodAnalzer();
-		assertEquals(5, nextProbeId);
 
 		assertLine(1001, 0, 2, 0, 0);
 		assertLine(1002, 0, 2, 0, 3);
@@ -553,7 +543,6 @@ public class MethodAnalyzerTest implements IProbeIdGenerator {
 	public void testTryCatchBlockNotCovered() {
 		createTryCatchBlock();
 		runMethodAnalzer();
-		assertEquals(3, nextProbeId);
 		assertEquals(CounterImpl.getInstance(5, 0),
 				result.getInstructionCounter());
 
@@ -568,8 +557,8 @@ public class MethodAnalyzerTest implements IProbeIdGenerator {
 		probes[0] = true;
 		probes[1] = true;
 		probes[2] = true;
+		probes[3] = true;
 		runMethodAnalzer();
-		assertEquals(3, nextProbeId);
 		assertEquals(CounterImpl.getInstance(0, 5),
 				result.getInstructionCounter());
 

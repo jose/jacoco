@@ -96,7 +96,7 @@ public class AnalyzerTest {
 		final byte[] bytes = Java9Support.downgradeIfRequired(
 				TargetLoader.getClassDataAsBytes(AnalyzerTest.class));
 		executionData.get(Long.valueOf(CRC64.checksum(bytes)),
-				"org/jacoco/core/analysis/AnalyzerTest", 200);
+				"org/jacoco/core/analysis/AnalyzerTest", 400);
 		analyzer.analyzeClass(bytes, "Test");
 		assertFalse(classes.get("org/jacoco/core/analysis/AnalyzerTest")
 				.isNoMatch());
